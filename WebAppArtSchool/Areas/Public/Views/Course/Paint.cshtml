@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Paint";
+    Layout = "~/Areas/Public/Views/Shared/_PublicLayout.cshtml";
+}
+
+
+<style>
+    .project {
+        margin: 15px 0;
+    }
+
+    .no-gutter .project {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .has-spacer {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    .has-spacer-extra-space {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    .has-side-spacer {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .project-title {
+        font-size: 1.25rem;
+    }
+
+    .project-skill {
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.06rem;
+    }
+
+    .project-info-box {
+        margin: 15px 0;
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 5px;
+    }
+
+        .project-info-box p {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #d5dadb;
+        }
+
+            .project-info-box p:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        -webkit-backface-visibility: hidden;
+    }
+</style>
+<h2></h2>
+
+<div class="container">
+    <br />
+    <h4>Paint Course info</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <img src="~/Assets/source/images/Paint.jpg" class="z-depth-2">
+            <div class="project-info-box">
+
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+        <div class="col-md-7">
+
+            <div class="project-info-box">
+                <p>
+                    <b>Our Promise:</b> Painting is the practice of applying paint, pigment, color or other medium to a solid surface (called the "matrix" or "support").
+                    The medium is commonly applied to the base with a brush, but other implements, such as knives, sponges, and airbrushes, can be used.
+                    <br /><br />Classes are suitable for all levels and are designed to allow students to be able, when they have finished the course, 
+                    to apply the finishes taught on the course at a professional level. The courses are therefore suitable for those who are already 
+                    decorative professionals, painters or plasterers and want to improve and extend their repertoire of finishes and up their game, 
+                    those looking for a career change, interior designers who wish to understand the process so they can specify more creative finishes 
+                    or those who just want to try out the crafts or wish to decorate their own home using decorative faux finishes, gilding, venetian 
+                    plaster, paint effects, marbling, woodgraining, tadelakt or any number of other finishes we teach. Everyone will take home a number 
+                    of sample boards and other items depending on the class to show potential clients.
+                </p>
+                <
+                <p style="color:#7010a3">
+                    <b>
+                        @Html.ActionLink("Back to Home", "Index", "Home")
+                    </b>
+                </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+    </div>
+
+</div>
+

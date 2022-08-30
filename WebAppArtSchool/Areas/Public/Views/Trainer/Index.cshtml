@@ -1,0 +1,137 @@
+﻿@model PagedList.IPagedList<Entities.Models.Trainer>
+@using PagedList;
+@using PagedList.Mvc;
+@using Entities.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Public/Views/Shared/_PublicLayout.cshtml";
+}
+
+
+@*@if (Model.Count == 0)
+    {
+        <div>
+            <h1>No Trainer in here</h1>
+        </div>
+    }
+    else
+    {*@
+
+<br />
+<div class="container">
+    <a href="~/Public/Trainer/Create" class="btn btn-primary">Create New</a>
+
+    <div>
+        <button id="filtersbtn" class="btn btn-default">Show Filters</button>
+    </div>
+    <div id="filters">
+        <form class="form-group">
+
+            <input class="form-control" type="number" name="searchMin" value="@(ViewBag.CurrentMin is null ? ViewBag.MinAge : ViewBag.CurrentMin )" placeholder="Minimum Salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
+            <input class="form-control" type="number" name="searchMax" value="@(ViewBag.CurrentMax is null ? ViewBag.MaxAge : ViewBag.CurrentMax)" placeholder="Maximum Salary" min="@ViewBag.MinSalary" max="@ViewBag.MaxSalary" />
+
+            <select name="searchCourse" class="form-control">
+                @{ var courses = ViewBag.Courses;
+
+
+                    if (ViewBag.CurrentCourse == null)
+                    {
+
+                        <option value="">Search By Course</option>
+                       foreach (var course in courses)
+                        {
+                            <option>@course.Title</option>
+
+                        }
+                    }
+                    else
+                    {
+                        <option value="">Search By Course</option>
+                        foreach (var course in courses)
+                        {
+                            if (course == ViewBag.CurrentCourse)
+                            {
+                                <option selected>@course.Title</option>
+
+                            }
+                            else
+                            {
+                                <option>@course.Title</option>
+
+                            }
+                        }
+                    }
+                }
+            </select>
+
+            <input class="form-control" type="text" name="searchName" value="@ViewBag.CurrentFullName" placeholder="Search By Name" />
+            <input class="btn btn-primary" type="submit" value="Search Employee" />
+        </form>
+    </div>
+
+    <div class="form-group">
+        <table class="table table-responsive-md table-light">
+            <thead class="table-dark">
+                <tr class="align-items-center">
+                    <th>Photo</th>
+                    <th>@Html.ActionLink("FirstName", "Index", "Trainer", new { sortOrder = ViewBag.FirstNameSortParam, searchName = ViewBag.CurrentName, searchCourse = ViewBag.CurrentCourse, searchMin = ViewBag.currentMin, searchMax = ViewBag.currentMax }, null)</th>
+                    <th>@Html.ActionLink("LastName", "Index", "Trainer", new { sortOrder = ViewBag.LastNameSortParam, searchName = ViewBag.CurrentName, searchCourse = ViewBag.CurrentCourse, searchMin = ViewBag.currentMin, searchMax = ViewBag.currentMax }, null)</th>
+                    <th>@Html.ActionLink("Telephone", "Index", "Trainer", new { sortOrder = ViewBag.TelephoneSortParam, searchName = ViewBag.CurrentName, searchCourse = ViewBag.CurrentCourse, searchMin = ViewBag.currentMin, searchMax = ViewBag.currentMax }, null)</th>
+                    <th>@Html.ActionLink("Salary", "Index", "Trainer", new { sortOrder = ViewBag.SalarySortParam, searchName = ViewBag.CurrentName, searchCourse = ViewBag.CurrentCourse, searchMin = ViewBag.currentMin, searchMax = ViewBag.currentMax }, null)</th>
+                    <th>Subject</th>
+                    <th>@Html.ActionLink("Course", "Index", "Trainer", new { sortOrder = ViewBag.CourseSortParam, searchName = ViewBag.CurrentName, searchCourse = ViewBag.CurrentCourse, searchMin = ViewBag.currentMin, searchMax = ViewBag.currentMax }, null)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tr in Model)
+                {
+
+                    <tr border-bottom: 1px solid black>
+                        <td><img src="@tr.PhotoUrl" class="rounded-circle z-depth-2" width="80" height="80"></td>
+                        <td class="">@tr.FirstName</td>
+                        <td>@tr.LastName</td>
+                        <td>@tr.Phone</td>
+                        <td>@tr.Salary</td>
+                        <td>@tr.Subject</td>
+                        <td>@tr.Course.Title</td>
+                        <td class="py-sm-5 row">
+                            <a href="~/Public/Trainer/Details/@tr.TrainerId" class="btn btn-primary btn-sm" title="Details"><i class="far fa-eye"></i></a><span>&nbsp</span>
+                            <a href="~/Public/Trainer/Edit?id=@tr.TrainerId" type="button" class="btn btn-primary" title="Edit"><i class="fas fa-edit"></i></a><span>&nbsp</span>
+                            <form method="post" action="~/Public/Trainer/Delete">
+                                @Html.AntiForgeryToken() <input type="hidden" name="id" value="@(tr?.TrainerId)" />
+                                <button class="btn btn-primary" type="submit" name="name" value="">  <i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                        <td></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            @Html.PagedListPager(Model, x => Url.Action("Index", "Trainer", new { page = x, pSize = 5 }), PagedListRenderOptions.Minimal)
+        </div>
+    </div>
+</div>
+}
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#filters").hide();
+            $("#filtersbtn").click(filterHandler);
+
+            function filterHandler() {
+                $("#filters").toggle(500);
+
+                let keimeno = $("#filtersbtn").text();
+
+                $("#filtersbtn").text(keimeno == "Show Filters" ? "Hide Filters" : "Show Filters");
+            }
+        })
+
+
+    </script>
+
+}

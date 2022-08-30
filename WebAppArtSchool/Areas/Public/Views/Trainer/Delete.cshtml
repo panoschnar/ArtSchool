@@ -1,0 +1,40 @@
+﻿@model Entities.Models
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Public/Views/Shared/_PublicLayout.cshtml";
+}
+
+<h2>Delete</h2>
+<script>
+    alert("Danger! All employees associated with this project will be deleted!")
+</script>
+
+<h3>Are you sure you want to delete this Trainer?</h3>
+<h3>All data associated with this Trainer will be deleted!</h3>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(t => t.Fullname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(t => t.Fullname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-primary" /> | <b>@Html.ActionLink("Back to List", "Index")</b>
+
+</div>
+    }
+</div>
+
+

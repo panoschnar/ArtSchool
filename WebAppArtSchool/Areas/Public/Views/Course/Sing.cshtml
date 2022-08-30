@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Sing";
+    Layout = "~/Areas/Public/Views/Shared/_PublicLayout.cshtml";
+}
+
+<style>
+    .project {
+        margin: 15px 0;
+    }
+
+    .no-gutter .project {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .has-spacer {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    .has-spacer-extra-space {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    .has-side-spacer {
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .project-title {
+        font-size: 1.25rem;
+    }
+
+    .project-skill {
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.06rem;
+    }
+
+    .project-info-box {
+        margin: 15px 0;
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 5px;
+    }
+
+        .project-info-box p {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #d5dadb;
+        }
+
+            .project-info-box p:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        -webkit-backface-visibility: hidden;
+    }
+</style>
+<h2></h2>
+
+<div class="container">
+    <br />
+    <h4>Sing Course info</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-5">
+            <img src="~/Assets/source/images/music.jpg" class="z-depth-2">
+            <div class="project-info-box">
+
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+        <div class="col-md-7">
+
+            <div class="project-info-box">
+                <p>
+                    <b>Our Promise:</b> Music is the art of arranging sounds in time through the elements of melody, harmony, rhythm, 
+                    and timbre.General definitions of music include common elements such as pitch (which governs melody and harmony), 
+                    rhythm (and its associated concepts tempo, meter, and articulation), dynamics (loudness and softness), and the sonic qualities
+                    of timbre and texture.
+                    <br /><br />Our mission is to (1) provide a variety of educational
+                    outreach programs focusing on the advancement
+                    of contemporary string music and string pedagogy for violinists, violists, cellists, and bass players and teachers;
+                    (2) to present a series of concerts for the general public featuring a variety of exceptional artists from diverse
+                    cultural backgrounds performing an eclectic range of musical genres, including, but not limited to, classical, world,
+                    jazz, fiddle styles, rock, and blues.
+
+                </p>
+                <
+                <p style="color:#7010a3">
+                    <b>
+                        @Html.ActionLink("Back to Home", "Index", "Home")
+                    </b>
+                </p>
+            </div><!-- / project-info-box -->
+        </div><!-- / column -->
+
+    </div>
+
+</div>
+
